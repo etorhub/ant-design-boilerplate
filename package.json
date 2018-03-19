@@ -12,7 +12,7 @@
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "precommit": "cross-env npm run lint && npm test",
-    "postinstall": "webpack -p --config webpack.production.config.js --progress",
+    "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress --colors",
     "prepush": "cross-env npm run lint && npm test"
   },
   "author": "Kliment Petrov <kleopetroff@gmail.com>",
