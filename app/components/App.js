@@ -1,4 +1,5 @@
-import { Table } from 'antd';
+import React from 'react';
+import { Form, Table, Card, Input, Icon } from 'antd';
 import reqwest from 'reqwest';
 
 const columns = [{
@@ -21,11 +22,40 @@ const columns = [{
 }];
 
 class App extends React.Component {
-  state = {
-    data: [],
-    pagination: {},
-    loading: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      pagination: {},
+      loading: false,
+      selectedRowKeys: [],
+      searchText: '',
+    };
+  }
+
+  componentDidMount() {
+    this.fetch();
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (nextState.searchText !== this.state.searchText && nextState.searchText.length > 2) {
+      console.log('datafilter!');
+    }
+  }
+
+  onChangeSearchText = (e) => {
+    this.setState({ searchText: e.target.value });
+  }
+
+  onSelectChange = (selectedRowKeys) => {
+    this.setState({ selectedRowKeys });
+  }
+
+  emitEmpty = () => {
+    this.searchTextInput.focus();
+    this.setState({ searchText: '' });
+  }
+
   handleTableChange = (pagination, filters, sorter) => {
     const pager = { ...this.state.pagination };
     pager.current = pagination.current;
@@ -39,9 +69,9 @@ class App extends React.Component {
       sortOrder: sorter.order,
       ...filters,
     });
-  }
+  };
+
   fetch = (params = {}) => {
-    console.log('params:', params);
     this.setState({ loading: true });
     reqwest({
       url: 'https://randomuser.me/api',
@@ -62,19 +92,56 @@ class App extends React.Component {
         pagination,
       });
     });
-  }
-  componentDidMount() {
-    this.fetch();
-  }
+  };
+
   render() {
+    const {
+      loading,
+      data,
+      pagination,
+      selectedRowKeys,
+      searchText,
+    } = this.state;
+    const FormItem = Form.Item;
+
+    const rowSelection = {
+      selectedRowKeys,
+      onChange: this.onSelectChange,
+    };
+
+    const paginationProps = {
+      showSizeChanger: true,
+      showQuickJumper: true,
+      ...pagination,
+    };
+
+    const suffix = searchText ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
+
     return (
-      <Table columns={columns}
-             rowKey={record => record.registered}
-             dataSource={this.state.data}
-             pagination={this.state.pagination}
-             loading={this.state.loading}
-             onChange={this.handleTableChange}
-      />
+      <Card bordered={false}>
+        <Form layout="inline">
+          <FormItem label="Name">
+            <Input
+              placeholder="Type 3 digits"
+              prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              value={searchText}
+              suffix={suffix}
+              onChange={this.onChangeSearchText}
+              // eslint-disable-next-line no-return-assign
+              ref={node => this.searchTextInput = node}
+            />
+          </FormItem>
+        </Form>
+        <Table
+          columns={columns}
+          rowKey={record => record.registered}
+          dataSource={data}
+          rowSelection={rowSelection}
+          pagination={paginationProps}
+          loading={loading}
+          onChange={this.handleTableChange}
+        />
+      </Card>
     );
   }
 }
