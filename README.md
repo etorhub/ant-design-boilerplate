@@ -1,30 +1,15 @@
-# ES6 React boilerplate using Webpack
+# ES6 React Ant Design boilerplate using Webpack
 
-[![Travis](https://img.shields.io/travis/KleoPetroff/react-webpack-boilerplate/master.svg?style=flat-square)](https://github.com/KleoPetroff/react-webpack-boilerplate) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Travis](https://img.shields.io/travis/KleoPetroff/react-webpack-boilerplate/master.svg?style=flat-square)](https://github.com/espinacs/ant-design-boilerplate) 
 
-Simple and optimized React boilerplate. It includes: 
+Just and example of ant-design working in React 16: 
 
-- [x] React 16.2.0
-- [x] ECMAScript 6 and JSX support
-- [x] React Router v4
-- [x] Component testing using [Enzyme](https://github.com/airbnb/enzyme) and [Jest](https://facebook.github.io/jest)
-- [x] Code Coverage
-- [x] Latest Webpack (v.3.11.0) and Webpack Dev Server (v.2.9.5) with Scope Hoisting enabled
-- [x] Hot Module Replacement using [react-hot-loader](https://github.com/gaearon/react-hot-loader)
-- [x] ES6 linting with continuous linting on file change
-- [x] SASS support
-- [x] Separate CSS stylesheets generation
-- [x] Automatic HTML generation
-- [x] Production Config
-- [x] Custom Babel Preset with Decorators, Class Properties, Rest/Spread operator support
-- [x] Export Separate Vendor Files
-- [ ] Redux
 
 ## Starting the dev server
 
 Make sure you have the latest Stable or LTS version of Node.js installed.
 
-1. `git clone https://github.com/KleoPetroff/react-webpack-boilerplate.git`
+1. `git clone https://github.com/espinacs/ant-design-boilerplate`
 2. Run `npm install` or `yarn install`
 3. Start the dev server using `npm start`
 3. Open [http://localhost:8080](http://localhost:8080)
@@ -38,12 +23,6 @@ Make sure you have the latest Stable or LTS version of Node.js installed.
 - `npm test` - run all tests
 - `npm run test:watch` - run all tests in watch mode
 - `npm run coverage` - generate code coverage report in the `coverage` folder
-
-## Vendor Exporting
-
-You can export specific vendors in separate files and load them. All vendors should be included in `app/vendors` and will be exported in a `vendors` folder under `dist`. The main idea is to serve independent JavaScript and CSS libraries, though currently all file formats are supported.
-
-! Don't forget to add the vendors in `app/index.html` and `build/index.html`.
 
 ## Code Coverage
 
