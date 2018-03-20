@@ -1,11 +1,11 @@
 {
-  "name": "react-webpack-boilerplate",
-  "version": "2.1.0",
-  "description": "Minimalistic ES6 React boilerplate",
+  "name": "ant-design-boilerplate",
+  "version": "1.0.0",
+  "description": "ES6 React Ant-Design boilerplate",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "clean": "rimraf dist",
+    "clean": "rm -rf dist",
     "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint ./app/**/**.js",
     "test": "jest",
@@ -15,7 +15,7 @@
     "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress --colors",
     "prepush": "cross-env npm run lint && npm test"
   },
-  "author": "Kliment Petrov <kleopetroff@gmail.com>",
+  "author": "Etor Diaz <etor.diaz.acha@gmail.com>",
   "license": "MIT",
   "jest": {
     "setupFiles": [
