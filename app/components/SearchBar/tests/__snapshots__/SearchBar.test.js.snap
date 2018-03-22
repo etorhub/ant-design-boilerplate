@@ -1,0 +1,495 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar should be mounted with no props 1`] = `
+<div
+  className="searchBar"
+>
+  <form
+    className="ant-form ant-form-inline"
+    onSubmit={[Function]}
+  >
+    <div
+      className="ant-row ant-form-item"
+      style={undefined}
+    >
+      <div
+        className="ant-form-item-label"
+      >
+        <label
+          className=""
+          htmlFor={null}
+          onClick={[Function]}
+          title="Name"
+        >
+          Name
+        </label>
+      </div>
+      <div
+        className="ant-form-item-control-wrapper"
+      >
+        <div
+          className="ant-form-item-control"
+        >
+          <span
+            className="ant-form-item-children"
+          >
+            <span
+              className="ant-input-affix-wrapper"
+              style={undefined}
+            >
+              <span
+                className="ant-input-prefix"
+              >
+                <i
+                  className="anticon anticon-search"
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                />
+              </span>
+              <input
+                className="ant-input"
+                disabled={false}
+                onChange={[Function]}
+                onKeyDown={[Function]}
+                placeholder="Filter by name"
+                style={null}
+                type="text"
+                value=""
+              />
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`SearchBar should manage typing with only searchText  1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SearchBar
+    onChangeSearchText={[Function]}
+    searchText="test"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <Form
+        hideRequiredMark={false}
+        layout="inline"
+        onSubmit={[Function]}
+        prefixCls="ant-form"
+      >
+        <FormItem
+          colon={true}
+          hasFeedback={false}
+          label="Name"
+          prefixCls="ant-form"
+        >
+          <Input
+            disabled={false}
+            onChange={[Function]}
+            placeholder="Filter by name"
+            prefix={
+              <Icon
+                style={
+                  Object {
+                    "color": "rgba(0,0,0,.25)",
+                  }
+                }
+                type="search"
+              />
+            }
+            prefixCls="ant-input"
+            suffix={
+              <Icon
+                id="search-text-delete"
+                onClick={[Function]}
+                type="close-circle"
+              />
+            }
+            type="text"
+            value="test"
+          />
+        </FormItem>
+      </Form>,
+      "className": "searchBar",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <FormItem
+          colon={true}
+          hasFeedback={false}
+          label="Name"
+          prefixCls="ant-form"
+        >
+          <Input
+            disabled={false}
+            onChange={[Function]}
+            placeholder="Filter by name"
+            prefix={
+              <Icon
+                style={
+                  Object {
+                    "color": "rgba(0,0,0,.25)",
+                  }
+                }
+                type="search"
+              />
+            }
+            prefixCls="ant-input"
+            suffix={
+              <Icon
+                id="search-text-delete"
+                onClick={[Function]}
+                type="close-circle"
+              />
+            }
+            type="text"
+            value="test"
+          />
+        </FormItem>,
+        "hideRequiredMark": false,
+        "layout": "inline",
+        "onSubmit": [Function],
+        "prefixCls": "ant-form",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Input
+            disabled={false}
+            onChange={[Function]}
+            placeholder="Filter by name"
+            prefix={
+              <Icon
+                style={
+                  Object {
+                    "color": "rgba(0,0,0,.25)",
+                  }
+                }
+                type="search"
+              />
+            }
+            prefixCls="ant-input"
+            suffix={
+              <Icon
+                id="search-text-delete"
+                onClick={[Function]}
+                type="close-circle"
+              />
+            }
+            type="text"
+            value="test"
+          />,
+          "colon": true,
+          "hasFeedback": false,
+          "label": "Name",
+          "prefixCls": "ant-form",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "disabled": false,
+            "onChange": [Function],
+            "placeholder": "Filter by name",
+            "prefix": <Icon
+              style={
+                Object {
+                  "color": "rgba(0,0,0,.25)",
+                }
+              }
+              type="search"
+            />,
+            "prefixCls": "ant-input",
+            "suffix": <Icon
+              id="search-text-delete"
+              onClick={[Function]}
+              type="close-circle"
+            />,
+            "type": "text",
+            "value": "test",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <Form
+          hideRequiredMark={false}
+          layout="inline"
+          onSubmit={[Function]}
+          prefixCls="ant-form"
+        >
+          <FormItem
+            colon={true}
+            hasFeedback={false}
+            label="Name"
+            prefixCls="ant-form"
+          >
+            <Input
+              disabled={false}
+              onChange={[Function]}
+              placeholder="Filter by name"
+              prefix={
+                <Icon
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                  type="search"
+                />
+              }
+              prefixCls="ant-input"
+              suffix={
+                <Icon
+                  id="search-text-delete"
+                  onClick={[Function]}
+                  type="close-circle"
+                />
+              }
+              type="text"
+              value="test"
+            />
+          </FormItem>
+        </Form>,
+        "className": "searchBar",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <FormItem
+            colon={true}
+            hasFeedback={false}
+            label="Name"
+            prefixCls="ant-form"
+          >
+            <Input
+              disabled={false}
+              onChange={[Function]}
+              placeholder="Filter by name"
+              prefix={
+                <Icon
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                  type="search"
+                />
+              }
+              prefixCls="ant-input"
+              suffix={
+                <Icon
+                  id="search-text-delete"
+                  onClick={[Function]}
+                  type="close-circle"
+                />
+              }
+              type="text"
+              value="test"
+            />
+          </FormItem>,
+          "hideRequiredMark": false,
+          "layout": "inline",
+          "onSubmit": [Function],
+          "prefixCls": "ant-form",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Input
+              disabled={false}
+              onChange={[Function]}
+              placeholder="Filter by name"
+              prefix={
+                <Icon
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                  type="search"
+                />
+              }
+              prefixCls="ant-input"
+              suffix={
+                <Icon
+                  id="search-text-delete"
+                  onClick={[Function]}
+                  type="close-circle"
+                />
+              }
+              type="text"
+              value="test"
+            />,
+            "colon": true,
+            "hasFeedback": false,
+            "label": "Name",
+            "prefixCls": "ant-form",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "disabled": false,
+              "onChange": [Function],
+              "placeholder": "Filter by name",
+              "prefix": <Icon
+                style={
+                  Object {
+                    "color": "rgba(0,0,0,.25)",
+                  }
+                }
+                type="search"
+              />,
+              "prefixCls": "ant-input",
+              "suffix": <Icon
+                id="search-text-delete"
+                onClick={[Function]}
+                type="close-circle"
+              />,
+              "type": "text",
+              "value": "test",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`SearchBar should render with all props 1`] = `
+<div
+  className="searchBar"
+>
+  <form
+    className="ant-form ant-form-inline"
+    onSubmit={[Function]}
+  >
+    <div
+      className="ant-row ant-form-item"
+      style={undefined}
+    >
+      <div
+        className="ant-form-item-label"
+      >
+        <label
+          className=""
+          htmlFor={null}
+          onClick={[Function]}
+          title="Name"
+        >
+          Name
+        </label>
+      </div>
+      <div
+        className="ant-form-item-control-wrapper"
+      >
+        <div
+          className="ant-form-item-control"
+        >
+          <span
+            className="ant-form-item-children"
+          >
+            <span
+              className="ant-input-affix-wrapper"
+              style={undefined}
+            >
+              <span
+                className="ant-input-prefix"
+              >
+                <i
+                  className="anticon anticon-search"
+                  style={
+                    Object {
+                      "color": "rgba(0,0,0,.25)",
+                    }
+                  }
+                />
+              </span>
+              <input
+                className="ant-input"
+                disabled={false}
+                onChange={[Function]}
+                onKeyDown={[Function]}
+                placeholder="Filter by name"
+                style={null}
+                type="text"
+                value="test"
+              />
+              <span
+                className="ant-input-suffix"
+              >
+                <i
+                  className="anticon anticon-close-circle"
+                  id="search-text-delete"
+                  onClick={[Function]}
+                />
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;
