@@ -13,7 +13,8 @@
     "coverage": "jest --coverage",
     "precommit": "cross-env npm run lint && npm test",
     "build": "NODE_ENV=production webpack --config ./webpack.production.config.js --progress --colors",
-    "prepush": "cross-env npm run lint && npm test"
+    "prepush": "cross-env npm run lint && npm test",
+    "heroku-postbuild": "webpack -p --config ./webpack.production.config.js --progress"
   },
   "author": "Etor Diaz <etor.diaz.acha@gmail.com>",
   "license": "MIT",
