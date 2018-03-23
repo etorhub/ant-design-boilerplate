@@ -4,7 +4,8 @@
   "description": "ES6 React Ant-Design boilerplate",
   "main": "index.js",
   "engines": {
-    "node": "v6.10.3"
+    "node": "v6.10.3",
+    "npm": "5.6.0"
   },
   "scripts": {
     "start": "webpack-dev-server",
