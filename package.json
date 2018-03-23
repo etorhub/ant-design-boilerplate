@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "ES6 React Ant-Design boilerplate",
   "main": "index.js",
+  "engines": {
+    "node": "v6.10.3"
+  },
   "scripts": {
     "start": "webpack-dev-server",
     "clean": "rm -rf dist",
