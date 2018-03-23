@@ -10,6 +10,9 @@ const fetchData = ({ data }, options) => {
   let url = apiUrl;
   url += `?results=${data.results}`;
   url += `&page=${data.page}`;
+  url += data.sortField ? `&sortField=${data.sortField}` : '';
+  url += data.sortOrder ? `&sortOrder=${data.sortOrder}` : '';
+  url += data.gender ? `&gender[]=${data.gender}` : '';
   const fetchRequest = new Request(url, options);
 
   return fetch(fetchRequest)
