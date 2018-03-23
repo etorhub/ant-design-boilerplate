@@ -58,7 +58,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-saga": "^0.16.0",
     "reqwest": "^2.0.5",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "webpack": "3.11.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -99,7 +100,6 @@
     "sass-loader": "6.0.7",
     "style-loader": "0.20.0",
     "url-loader": "1.0.0",
-    "webpack": "3.11.0",
     "webpack-dev-server": "2.9.6"
   }
 }
