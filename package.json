@@ -18,33 +18,42 @@
   "author": "Etor Diaz <etor.diaz.acha@gmail.com>",
   "license": "MIT",
   "jest": {
-    "setupFiles": [
-      "<rootDir>/config/jest/shim.js"
-    ],
-    "collectCoverageFrom": [
-      "app/**/*.{js,jsx,ts,tsx}"
-    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/assetsTransformer.js",
-      "\\.(css|less)$": "<rootDir>/config/jest/assetsTransformer.js"
+      "\\.(css|less)$": "identity-obj-proxy"
     },
-    "testMatch": [
-      "**/?(*.)(spec|test).js?(x)"
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
     ],
-    "transform": {
-      "\\.js$": "babel-jest"
-    }
+    "modulePathIgnorePatterns": [
+      "core"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "bail": true,
+    "collectCoverageFrom": ["app/**/*.{js,jsx}"]
   },
   "dependencies": {
     "antd": "^3.3.0",
     "babel-plugin-import": "^1.6.7",
     "babel-runtime": "^6.26.0",
     "cross-env": "5.1.4",
+    "lodash.get": "^4.4.2",
+    "prop-types": "^15.6.1",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-hot-loader": "4.0.0",
+    "react-redux": "^5.0.7",
     "react-router-dom": "4.2.2",
-    "reqwest": "^2.0.5"
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-saga": "^0.16.0",
+    "reqwest": "^2.0.5",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -73,7 +82,10 @@
     "file-loader": "1.1.10",
     "html-webpack-plugin": "2.30.1",
     "husky": "0.15.0-rc.2",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "22.1.0",
+    "jest-cli": "^22.4.3",
+    "jest-css-modules": "^1.1.0",
     "node-sass": "4.8.1",
     "open-browser-webpack-plugin": "0.0.5",
     "react-addons-test-utils": "15.6.2",
