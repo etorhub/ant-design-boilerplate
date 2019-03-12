@@ -65,7 +65,7 @@
     "lodash.get": "^4.4.2",
     "prop-types": "^15.6.1",
     "react": "16.2.0",
-    "react-dom": "16.2.0",
+    "react-dom": ">16.2.1",
     "react-hot-loader": "4.0.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "4.2.2",
@@ -103,6 +103,6 @@
     "react-test-renderer": "16.2.0",
     "rimraf": "2.6.2",
     "url-loader": "1.0.0",
-    "webpack-dev-server": "2.9.6"
+    "webpack-dev-server": ">3.1.11"
   }
 }
