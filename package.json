@@ -14,9 +14,9 @@
     "preview": "vite preview",
     "clean": "rimraf dist",
     "lint": "eslint ./app --ext .js,.jsx",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "coverage": "jest --coverage",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
     "precommit": "cross-env npm run lint && npm test",
     "prepush": "cross-env npm run lint && npm test",
     "heroku-postbuild": "vite build"
@@ -54,36 +54,11 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^25.0.1",
     "rimraf": "^5.0.10",
+    "vitest": "^2.1.6",
+    "@vitest/coverage-v8": "^2.1.6",
     "sass": "^1.77.8",
     "vite": "^6.0.3"
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "moduleNameMapper": {
-      "\\.(css|less|scss)$": "identity-obj-proxy"
-    },
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ],
-    "modulePathIgnorePatterns": [
-      "core"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "bail": true,
-    "collectCoverageFrom": [
-      "app/**/*.{js,jsx}"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest.setup.js"
-    ]
   }
 }

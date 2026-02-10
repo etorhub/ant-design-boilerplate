@@ -5,11 +5,11 @@ import SearchBar from '../index';
 describe('SearchBar', () => {
   const testProps = {
     searchText: 'test',
-    onChangeSearchText: jest.fn(),
+    onChangeSearchText: vi.fn(),
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should be mounted with no props', () => {
@@ -28,7 +28,7 @@ describe('SearchBar', () => {
   });
 
   it('should dispatch action and react to typing', () => {
-    const onChangeSearchText = jest.fn();
+    const onChangeSearchText = vi.fn();
     render(<SearchBar onChangeSearchText={onChangeSearchText} />);
     const input = screen.getByPlaceholderText('Filter by name');
     fireEvent.change(input, { target: { value: '111' } });

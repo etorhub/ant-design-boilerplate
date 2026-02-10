@@ -57,5 +57,5 @@ npm-debug.log
 .vscode
 
 # coverage
-
 /coverage
+app/coverage

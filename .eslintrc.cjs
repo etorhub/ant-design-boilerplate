@@ -13,7 +13,16 @@ module.exports = {
     browser: true,
     node: true,
     es2022: true,
-    jest: true,
+  },
+  globals: {
+    vi: 'readonly',
+    describe: 'readonly',
+    it: 'readonly',
+    expect: 'readonly',
+    beforeEach: 'readonly',
+    afterEach: 'readonly',
+    beforeAll: 'readonly',
+    afterAll: 'readonly',
   },
   rules: {
     'space-before-function-paren': 'off',
@@ -35,7 +44,7 @@ module.exports = {
     'default-param-last': 'off',
     'operator-linebreak': 'off',
     'no-unused-vars': ['error', { varsIgnorePattern: '^React$' }],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/tests/**'] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/*.test.jsx', '**/tests/**'] }],
     'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
   },
 };
