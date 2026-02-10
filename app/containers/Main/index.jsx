@@ -23,7 +23,7 @@ class Main extends React.Component {
     this.fetch();
   }
 
-  onSelectChange = (selectedRowKeys) => {
+  onSelectChange = selectedRowKeys => {
     this.setState({ selectedRowKeys });
   };
 
@@ -92,10 +92,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChangeSearchText: (text) => {
+  onChangeSearchText: text => {
     dispatch(changeSearchText(text));
   },
-  onGetAPIData: (text) => {
+  onGetAPIData: text => {
     dispatch(getAPIData(text));
   },
 });

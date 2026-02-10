@@ -5,7 +5,7 @@ export const getAppData = state => state.app;
 
 export const getFilteredDataArray = createSelector(
   getAppData,
-  (data) => {
+  data => {
     const results = get(data, 'apiData.results', []);
     const sText = get(data, 'searchText', null);
     return (results.length > 0 && sText && sText.length > 0) ?

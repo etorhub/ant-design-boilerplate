@@ -1,42 +1,46 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, { shallow, mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import SearchBar from '../index';
-
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('SearchBar', () => {
   const testProps = {
     searchText: 'test',
     onChangeSearchText: jest.fn(),
   };
-  it('should be mounted with no props', () => {
-    const wrapper = renderer.create(<SearchBar />);
-    expect(wrapper).toMatchSnapshot();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
-  it('should manage typing with only searchText ', () => {
-    const wrapper = shallow(<SearchBar searchText="test" />);
-    expect(wrapper).toMatchSnapshot();
+  it('should be mounted with no props', () => {
+    const { container } = render(<SearchBar />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should manage typing with only searchText', () => {
+    const { container } = render(<SearchBar searchText="test" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('should render with all props', () => {
-    const wrapper = renderer.create(<SearchBar {...testProps} />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<SearchBar {...testProps} />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('should dispatch action and react to typing ', () => {
-    const wrapper = mount(<SearchBar onChangeSearchText={testProps.onChangeSearchText} />);
-    const expected = '111';
-    wrapper.find('.ant-input').simulate('change', { target: { value: expected } });
-    expect(testProps.onChangeSearchText).toHaveBeenCalledTimes(1);
+  it('should dispatch action and react to typing', () => {
+    const onChangeSearchText = jest.fn();
+    render(<SearchBar onChangeSearchText={onChangeSearchText} />);
+    const input = screen.getByPlaceholderText('Filter by name');
+    fireEvent.change(input, { target: { value: '111' } });
+    expect(onChangeSearchText).toHaveBeenCalledTimes(1);
+    expect(onChangeSearchText).toHaveBeenCalledWith('111');
   });
 
-  it('should delete text when button clear clicked ', () => {
-    const wrapper = mount(<SearchBar {...testProps} />);
-    wrapper.find('#search-text-delete').at(0).simulate('click');
-    expect(testProps.onChangeSearchText).toHaveBeenCalledTimes(2);
+  it('should delete text when button clear clicked', () => {
+    render(<SearchBar {...testProps} />);
+    const clearButton = document.getElementById('search-text-delete');
+    expect(clearButton).toBeInTheDocument();
+    fireEvent.click(clearButton);
+    expect(testProps.onChangeSearchText).toHaveBeenCalledWith('');
   });
 });
-

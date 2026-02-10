@@ -1,9 +1,8 @@
 # ES6 React Ant Design boilerplate using Webpack
 
-[![Travis](https://img.shields.io/travis/KleoPetroff/react-webpack-boilerplate/master.svg?style=flat-square)](https://github.com/espinacs/ant-design-boilerplate) 
+[![CI](https://github.com/espinacs/ant-design-boilerplate/actions/workflows/ci.yml/badge.svg?style=flat-square)](https://github.com/espinacs/ant-design-boilerplate/actions/workflows/ci.yml)
 
-Just and example of ant-design working in React 16: 
-
+Just and example of ant-design working in React 16:
 
 ## Starting the dev server
 
@@ -12,7 +11,7 @@ Make sure you have the latest Stable or LTS version of Node.js installed.
 1. `git clone https://github.com/espinacs/ant-design-boilerplate`
 2. Run `npm install` or `yarn install`
 3. Start the dev server using `npm start`
-3. Open [http://localhost:8080](http://localhost:8080)
+4. Open [http://localhost:8080](http://localhost:8080)
 
 ## Available Commands
 

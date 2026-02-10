@@ -1,26 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import Root from './config/Root';
 import store from './config/configureStore';
 
-const render = (Component) => {
-  ReactDOM.render(
-    <AppContainer>
-      <Provider store={store}>
-        <Component />
-      </Provider>
-    </AppContainer>,
-    document.getElementById('root'),
-  );
-};
+const container = document.getElementById('root');
+const root = createRoot(container);
 
-render(Root);
-
-if (module.hot) {
-  module.hot.accept('./config/Root', () => {
-    const newApp = require('./config/Root').default;
-    render(newApp);
-  });
-}
+root.render(
+  <Provider store={store}>
+    <Root />
+  </Provider>,
+);

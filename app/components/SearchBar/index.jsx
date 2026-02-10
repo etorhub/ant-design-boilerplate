@@ -1,25 +1,28 @@
 import React from 'react';
-import { Form, Input, Icon } from 'antd';
+import { Form, Input } from 'antd';
+import { SearchOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { PropTypes } from 'prop-types';
 
-const FormItem = Form.Item;
+const { Item: FormItem } = Form;
 
 require('./styles.css');
 
-const SearchBar = ({ searchText, onChangeSearchText }) => (
+const SearchBar = ({ searchText = '', onChangeSearchText = () => {} }) => (
   <div className="searchBar">
     <Form layout="inline">
       <FormItem label="Name">
         <Input
           placeholder="Filter by name"
-          prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />}
+          prefix={<SearchOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
           value={searchText}
-          suffix={searchText ?
-            <Icon
-              type="close-circle"
-              id="search-text-delete"
-              onClick={() => onChangeSearchText('')}
-            /> : null}
+          suffix={searchText
+            ? (
+              <CloseCircleOutlined
+                id="search-text-delete"
+                onClick={() => onChangeSearchText('')}
+              />
+            )
+            : null}
           onChange={e => onChangeSearchText(e.target.value)}
         />
       </FormItem>
@@ -30,11 +33,6 @@ const SearchBar = ({ searchText, onChangeSearchText }) => (
 SearchBar.propTypes = {
   searchText: PropTypes.string,
   onChangeSearchText: PropTypes.func,
-};
-
-SearchBar.defaultProps = {
-  searchText: '',
-  onChangeSearchText: () => {},
 };
 
 export default SearchBar;
