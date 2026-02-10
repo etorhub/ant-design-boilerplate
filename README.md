@@ -13,7 +13,7 @@
 [![Vitest](https://img.shields.io/badge/Vitest-2-6E9F18?style=flat-square&logo=vitest&logoColor=white)](https://vitest.dev/)
 [![ESLint](https://img.shields.io/badge/ESLint-8-4B32C3?style=flat-square&logo=eslint&logoColor=white)](https://eslint.org/)
 
-Minimal app: fetch data, list and filter with Ant Design Table. Stack: **React 18**, **TypeScript**, **Vite**, **Redux** + **Redux-Saga**, **Reselect**, **Ant Design**. Pre-commit/pre-push run lint + tests.
+Minimal app: fetch data, list and filter with Ant Design Table. Stack: **React 18**, **TypeScript**, **Vite**, **Redux** + **Redux-Saga**, **Reselect**, **Ant Design**. Git hooks (Lefthook): pre-commit and pre-push run lint + tests.
 
 ## Quick start
 

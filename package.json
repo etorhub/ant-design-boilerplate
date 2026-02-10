@@ -17,8 +17,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "precommit": "cross-env npm run lint && npm test",
-    "prepush": "cross-env npm run lint && npm test",
+    "prepare": "lefthook install",
     "heroku-postbuild": "vite build"
   },
   "author": "Etor Diaz <etor.diaz.acha@gmail.com>",
@@ -40,6 +39,7 @@
     "reselect": "^4.1.8"
   },
   "devDependencies": {
+    "lefthook": "^1.7.0",
     "@babel/core": "^7.25.2",
     "@babel/eslint-parser": "^7.24.7",
     "@babel/preset-env": "^7.25.4",

@@ -1,0 +1,11 @@
+# https://github.com/evilmartians/lefthook
+
+pre-commit:
+  commands:
+    lint-and-test:
+      run: npm run lint && npm test
+
+pre-push:
+  commands:
+    lint-and-test:
+      run: npm run lint && npm test
