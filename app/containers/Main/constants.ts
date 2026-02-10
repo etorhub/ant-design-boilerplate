@@ -3,6 +3,6 @@ const Constants = {
   GET_API_DATA_ERROR: 'GET_API_DATA_ERROR',
   GET_API_DATA_LOADED: 'GET_API_DATA_LOADED',
   MAIN_SEARCH_TEXT_CHANGE: 'MAIN_SEARCH_TEXT_CHANGE',
-};
+} as const;
 
 export default Constants;
