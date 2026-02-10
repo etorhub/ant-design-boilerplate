@@ -5,9 +5,9 @@ import { PropTypes } from 'prop-types';
 
 const { Item: FormItem } = Form;
 
-require('./styles.css');
+import './styles.css';
 
-const SearchBar = ({ searchText = '', onChangeSearchText = () => {} }) => (
+const SearchBar = ({ searchText = '', onChangeSearchText = () => { } }) => (
   <div className="searchBar">
     <Form layout="inline">
       <FormItem label="Name">
