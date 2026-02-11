@@ -2,11 +2,15 @@ import React from 'react';
 import { Table, Card } from 'antd';
 import { connect } from 'react-redux';
 import type { TablePaginationConfig } from 'antd/es/table';
-import type { SorterResult } from 'antd/es/table/interface';
+import type { FilterValue, SorterResult } from 'antd/es/table/interface';
 import SearchBar from '../../components/SearchBar/index';
 import { changeSearchText, getAPIData } from './actions';
 import columns from './headers';
-import { getFilteredDataArray, isDataLoading, getSearchText } from './selectors';
+import {
+  getFilteredDataArray,
+  isDataLoading,
+  getSearchText,
+} from './selectors';
 import type { RootState, RandomUserPerson } from '../../types';
 
 const NUM_RESULTS = 100;
@@ -51,7 +55,7 @@ class Main extends React.Component<MainProps, MainComponentState> {
 
   handleTableChange = (
     pagination: TablePaginationConfig,
-    _filters: Record<string, unknown>,
+    filters: Record<string, FilterValue | null>,
     sorter: SorterResult<RandomUserPerson> | SorterResult<RandomUserPerson>[],
   ) => {
     const pager = { ...this.state.pagination };
@@ -60,17 +64,28 @@ class Main extends React.Component<MainProps, MainComponentState> {
       pagination: pager,
     });
     const singleSorter = Array.isArray(sorter) ? sorter[0] : sorter;
+    const filterParams: ApiParams = filters
+      ? Object.fromEntries(
+        Object.entries(filters)
+          .filter(
+            ([, value]) => value != null && (!Array.isArray(value) || value.length > 0),
+          )
+          .map(([key, value]) => [
+            key,
+            Array.isArray(value) && value.length === 1 ? value[0] : value,
+          ]),
+      )
+      : {};
     this.fetch({
       results: pagination.pageSize,
       page: pagination.current,
       sortField: singleSorter?.field as string | undefined,
       sortOrder: singleSorter?.order as string | undefined,
+      ...filterParams,
     });
   };
 
-  fetch = (
-    params: ApiParams = { results: 10, page: 0 },
-  ) => {
+  fetch = (params: ApiParams = { results: 10, page: 0 }) => {
     this.props.onGetAPIData(params);
   };
 
@@ -92,7 +107,11 @@ class Main extends React.Component<MainProps, MainComponentState> {
           dataSource={data}
           onChange={this.handleTableChange}
           rowSelection={{ selectedRowKeys, onChange: this.onSelectChange }}
-          pagination={{ showSizeChanger: true, showQuickJumper: true, ...pagination }}
+          pagination={{
+            showSizeChanger: true,
+            showQuickJumper: true,
+            ...pagination,
+          }}
         />
       </Card>
     );
@@ -106,7 +125,7 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 type MainDispatch = (
-  action: ReturnType<typeof changeSearchText> | ReturnType<typeof getAPIData>
+  action: ReturnType<typeof changeSearchText> | ReturnType<typeof getAPIData>,
 ) => void;
 
 const mapDispatchToProps = (dispatch: MainDispatch) => ({
