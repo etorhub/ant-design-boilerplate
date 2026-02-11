@@ -18,8 +18,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "prepare": "lefthook install",
-    "heroku-postbuild": "vite build"
+    "prepare": "lefthook install"
   },
   "author": "Etor Diaz <etor.diaz.acha@gmail.com>",
   "license": "MIT",
