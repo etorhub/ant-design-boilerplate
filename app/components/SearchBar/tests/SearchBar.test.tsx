@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SearchBar from '../index';
 
@@ -40,7 +39,9 @@ describe('SearchBar', () => {
     render(<SearchBar {...testProps} />);
     const clearButton = document.getElementById('search-text-delete');
     expect(clearButton).toBeInTheDocument();
-    fireEvent.click(clearButton);
+    if (clearButton) {
+      fireEvent.click(clearButton);
+    }
     expect(testProps.onChangeSearchText).toHaveBeenCalledWith('');
   });
 });

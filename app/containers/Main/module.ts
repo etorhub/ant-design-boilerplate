@@ -1,14 +1,17 @@
+import type { Reducer } from 'redux';
 import Constants from './constants';
+import type { MainState } from '../../types';
+import type { MainAction } from './actions';
 
-export const initialState = {
-  apiData: [],
+export const initialState: MainState = {
+  apiData: {},
   apiDataLoading: false,
   apiDataLoaded: false,
-  apiDataError: false,
+  apiDataError: null,
   searchText: '',
 };
 
-const mainReducer = (state = initialState, action) => {
+const mainReducer: Reducer<MainState, MainAction> = (state = initialState, action): MainState => {
   switch (action.type) {
     case Constants.GET_API_DATA:
       return {

@@ -1,14 +1,17 @@
 module.exports = {
   root: true,
-  extends: ['airbnb'],
-  parser: '@babel/eslint-parser',
+  extends: [
+    'airbnb',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    requireConfigFile: false,
-    babelOptions: { presets: ['@babel/preset-react'] },
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
+    project: null,
   },
+  plugins: ['@typescript-eslint'],
   env: {
     browser: true,
     node: true,
@@ -27,7 +30,7 @@ module.exports = {
   rules: {
     'space-before-function-paren': 'off',
     'react/prefer-stateless-function': 'warn',
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.jsx'] }],
     'linebreak-style': 'off',
     'global-require': 'off',
     semi: 'warn',
@@ -43,8 +46,18 @@ module.exports = {
     'react/no-access-state-in-setstate': 'off',
     'default-param-last': 'off',
     'operator-linebreak': 'off',
-    'no-unused-vars': ['error', { varsIgnorePattern: '^React$' }],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/*.test.jsx', '**/tests/**'] }],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^React$' }],
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.ts', '**/*.test.tsx', '**/tests/**'] }],
     'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+    'import/extensions': ['error', 'ignorePackages', { ts: 'never', tsx: 'never', js: 'never', jsx: 'never' }],
+  },
+  settings: {
+    'import/resolver': {
+      node: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
+    },
   },
 };

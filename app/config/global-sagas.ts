@@ -2,13 +2,10 @@ import { fork, all } from 'redux-saga/effects';
 
 import appSagas from '../containers/Main/sagas';
 
-const sagas = [
-  appSagas,
-];
+const sagas = [appSagas];
 
-function* globalSagas() {
-  const globalSagasForks = sagas.map(saga => fork(saga));
-
+function* globalSagas(): Generator {
+  const globalSagasForks = sagas.map(saga => fork(saga as () => Generator));
   yield all([...globalSagasForks]);
 }
 

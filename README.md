@@ -1,68 +1,56 @@
-# ES6 React Ant Design boilerplate using Webpack
+# React + TypeScript + Ant Design boilerplate
 
 [![CI](https://github.com/espinacs/ant-design-boilerplate/actions/workflows/ci.yml/badge.svg?style=flat-square)](https://github.com/espinacs/ant-design-boilerplate/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](./LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D18-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![npm](https://img.shields.io/badge/npm-%3E%3D9-CB3837?style=flat-square&logo=npm)](https://www.npmjs.com/)
 
-Just and example of ant-design working in React 16:
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Ant Design](https://img.shields.io/badge/Ant_Design-4-0170FE?style=flat-square&logo=antdesign&logoColor=white)](https://ant.design/)
+[![Redux](https://img.shields.io/badge/Redux-5-764ABC?style=flat-square&logo=redux&logoColor=white)](https://redux.js.org/)
+[![Vitest](https://img.shields.io/badge/Vitest-2-6E9F18?style=flat-square&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![ESLint](https://img.shields.io/badge/ESLint-8-4B32C3?style=flat-square&logo=eslint&logoColor=white)](https://eslint.org/)
 
-## Starting the dev server
+Minimal app: fetch data, list and filter with Ant Design Table. Stack: **React 18**, **TypeScript**, **Vite**, **Redux** + **Redux-Saga**, **Reselect**, **Ant Design**. Git hooks (Lefthook): pre-commit and pre-push run lint + tests.
 
-Make sure you have the latest Stable or LTS version of Node.js installed.
+## Quick start
 
-1. `git clone https://github.com/espinacs/ant-design-boilerplate`
-2. Run `npm install` or `yarn install`
-3. Start the dev server using `npm start`
-4. Open [http://localhost:8080](http://localhost:8080)
+Node ≥18, npm ≥9.
 
-## Available Commands
+```bash
+git clone https://github.com/espinacs/ant-design-boilerplate
+cd ant-design-boilerplate
+npm install
+npm start
+```
 
-- `npm start` - start the dev server
-- `npm clean` - delete the dist folder
-- `npm run production` - create a production ready build in `dist` folder
-- `npm run lint` - execute an eslint check
-- `npm test` - run all tests
-- `npm run test:watch` - run all tests in watch mode
-- `npm run coverage` - generate code coverage report in the `coverage` folder
+Open [http://localhost:8080](http://localhost:8080).
 
-Also, precommit and prepush are both enabled to check all the code is linted and tested.
+## Commands
 
-## About the architecture
+| Command | Description |
+|---------|-------------|
+| `npm start` | Dev server (Vite) |
+| `npm run build` | Production build → `dist/` |
+| `npm run preview` | Preview production build |
+| `npm run clean` | Remove `dist/` |
+| `npm run lint` | ESLint (`.ts`, `.tsx`) |
+| `npm test` | Vitest (single run) |
+| `npm run test:watch` | Vitest watch |
+| `npm run coverage` | Coverage report → `coverage/` |
 
-Although this application is really simple (just fetch data, list and filter it) it has a pretty complete architecture, as detailed:
+## Architecture (short)
 
-#### REACT - View Rendering
+- **React** — UI; Main container + SearchBar + Ant Design Table.
+- **Redux** — Global state.
+- **Redux-Saga** — Async data fetch, dispatches success/error.
+- **Reselect** — Selectors from Redux state (components stay decoupled).
+- **Ant Design** — Components and styling.
 
-[React](https://reactjs.org/) is just the way to display the stored info. Mainly, there's a Main container that dispatches both fetch and filtering events, and at the same times renders the SearchBar (self component) and the Ant Desing Table
+Coverage: Vitest + v8; config in `vite.config.ts`. Report: `npm run coverage` → open `coverage/index.html`.
 
-#### REDUX-SAGA - Fetching Data
+## License
 
-[Redux-Saga](https://github.com/redux-saga/redux-saga) is the agent dedicated to fetch data from the server, and dispatches the convenient Redux events with fetched data or errors.
-
-This is only a layer that could be changed, for example, by an Apollo GraphQL interface.
-
-#### REDUX - State Management
-
-[Redux](https://github.com/reactjs/redux) stores part of the state of the application (a part from the one that each component/containers handles for itself).
-
-#### RESELECT - Serving Data
-
-Components are not subscribed directly to the Redux state. Instead, they only get data from the Redux state through [Reselect](https://github.com/reactjs/reselect) selectors.
-
-This way, components/containers and redux are absolutely decoupled, and any other State Manager (Flux, for example) could be used, like any other components library (Vue.js, for example)
-
-#### Ant Design - Stlyed Components Library
-
-[Ant Design](https://ant.design/) Gives to the project a small style boost!
-
-## Code Coverage
-
-The project is using the Jest Code Coverage tool. The reports are generated by running `npm run coverage`. All configurations are located in `package.json`, inside the `jest` object.
-
-The coverage report consists of an HTML reporter, which can be viewed in the browser and some helper coverage files like the coverage json and xml file.
-
-## Production code
-
-Run `npm run production`. The production-ready code will be located under `dist` folder.
-
-## Licence
-
-_ant-design-boilerplate_ is available under MIT.
+MIT.
