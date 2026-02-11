@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: ['22']
+        node-version: ['18', '22']
 
     steps:
       - uses: actions/checkout@v4
@@ -31,6 +31,9 @@ jobs:
 
       - name: Test
         run: npm test
+
+      - name: Coverage
+        run: npm run coverage
 
       - name: Build
         run: npm run build

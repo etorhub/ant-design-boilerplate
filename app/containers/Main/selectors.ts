@@ -1,18 +1,17 @@
-import get from 'lodash.get';
 import { createSelector } from 'reselect';
-import type { RootState, RandomUserPerson } from '../../types';
+import type { RootState, RandomUserPerson } from '@/types';
 
 const getAppData = (state: RootState) => state.app;
 
 export const getFilteredDataArray = createSelector(
   getAppData,
   data => {
-    const results = get(data, 'apiData.results', []) as RandomUserPerson[];
-    const sText = get(data, 'searchText', null) as string | null;
-    return results.length > 0 && sText && sText.length > 0
+    const results = (data.apiData?.results ?? []) as RandomUserPerson[];
+    const sText = data.searchText ?? '';
+    return results.length > 0 && sText.length > 0
       ? results.filter(
-        ({ name }) => name.first.toLocaleLowerCase().includes(sText.toLowerCase()) ||
-            name.last.toLocaleLowerCase().includes(sText.toLowerCase()),
+        ({ name }) => name.first.toLocaleLowerCase().includes(sText.toLowerCase())
+            || name.last.toLocaleLowerCase().includes(sText.toLowerCase()),
       )
       : results;
   },
@@ -20,10 +19,15 @@ export const getFilteredDataArray = createSelector(
 
 export const isDataLoading = createSelector(
   getAppData,
-  data => !!get(data, 'apiDataLoading'),
+  data => !!data.apiDataLoading,
 );
 
 export const getSearchText = createSelector(
   getAppData,
-  data => get(data, 'searchText', '') as string,
+  data => data.searchText ?? '',
+);
+
+export const getApiDataError = createSelector(
+  getAppData,
+  data => data.apiDataError,
 );

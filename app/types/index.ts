@@ -31,7 +31,7 @@ export interface RootState {
 }
 
 /**
- * Pagination params for API
+ * Pagination and filter params for API (Ant Design table can pass extra filter keys)
  */
 export interface ApiPaginationParams {
   results?: number;
@@ -39,4 +39,5 @@ export interface ApiPaginationParams {
   sortField?: string;
   sortOrder?: string;
   gender?: string | string[];
+  [key: string]: unknown;
 }
