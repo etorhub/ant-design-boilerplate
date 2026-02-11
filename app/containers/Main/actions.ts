@@ -1,5 +1,5 @@
+import type { ApiPaginationParams, RandomUserResult } from '@/types';
 import Constants from './constants';
-import type { ApiPaginationParams, RandomUserResult } from '../../types';
 
 export const changeSearchText = (searchText: string) => ({
   type: Constants.MAIN_SEARCH_TEXT_CHANGE,

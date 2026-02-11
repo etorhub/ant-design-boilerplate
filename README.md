@@ -28,6 +28,12 @@ npm start
 
 Open [http://localhost:8080](http://localhost:8080).
 
+## Environment
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_API_URL` | API base URL for data (default: `https://randomuser.me/api`). Set when using a custom backend. |
+
 ## Commands
 
 | Command | Description |
@@ -37,19 +43,34 @@ Open [http://localhost:8080](http://localhost:8080).
 | `npm run preview` | Preview production build |
 | `npm run clean` | Remove `dist/` |
 | `npm run lint` | ESLint (`.ts`, `.tsx`) |
+| `npm run lint:fix` | ESLint with auto-fix |
 | `npm test` | Vitest (single run) |
-| `npm run test:watch` | Vitest watch |
+| `npm run test:watch` | Vitest watch mode |
 | `npm run coverage` | Coverage report → `coverage/` |
 
-## Architecture (short)
+## Testing
 
-- **React** — UI; Main container + SearchBar + Ant Design Table.
-- **Redux** — Global state.
-- **Redux-Saga** — Async data fetch, dispatches success/error.
-- **Reselect** — Selectors from Redux state (components stay decoupled).
-- **Ant Design** — Components and styling.
+- **Single run:** `npm test` (used in CI).
+- **Watch mode:** `npm run test:watch` for development.
+- **Coverage:** `npm run coverage`; open `coverage/index.html`. Config in `vite.config.ts` (Vitest + v8). CI runs coverage on Node 18 and 22.
 
-Coverage: Vitest + v8; config in `vite.config.ts`. Report: `npm run coverage` → open `coverage/index.html`.
+## Project structure
+
+- **Types:** `app/types/index.ts` — shared interfaces (e.g. `RootState`, `MainState`, `RandomUserPerson`).
+- **Redux slice:** `app/containers/Main/` — reducer (`module.ts`), actions, selectors, sagas; Main container is the only slice.
+- **Config:** `app/config/` — store, router, global sagas, constants.
+
+## Architecture
+
+- **React** — UI: Main container + SearchBar + Ant Design Table.
+- **Redux** — Global state; single slice under `state.app`.
+- **Redux-Saga** — Listens for `GET_API_DATA`; fetches from API; dispatches `GET_API_DATA_LOADED` or `GET_API_DATA_ERROR`.
+- **Reselect** — Selectors (`getFilteredDataArray`, `isDataLoading`, `getSearchText`, `getApiDataError`) keep components decoupled from state shape.
+- **Flow** — User action (e.g. search, table change) → dispatch action → saga (if API) → API call → dispatch result → reducer updates state → selectors → UI re-renders.
+
+## Production
+
+`server.js` is a CommonJS Express server that serves `dist/` with security headers (Helmet) and `Cache-Control` (long-lived for assets, no-store for HTML). Run after `npm run build` with `node server.js` (or use `PORT`). Ant Design 5 is a possible future upgrade (theming and bundle size differ); this boilerplate stays on Ant Design 4 for now.
 
 ## License
 
