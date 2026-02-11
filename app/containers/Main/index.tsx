@@ -13,6 +13,7 @@ import {
   getFilteredDataArray,
   getApiDataError,
   isDataLoading,
+  isApiDataLoaded,
   getSearchText,
 } from './selectors';
 
@@ -23,6 +24,7 @@ const Main = () => {
   const data = useSelector(getFilteredDataArray);
   const error = useSelector(getApiDataError);
   const loading = useSelector(isDataLoading);
+  const apiDataLoaded = useSelector(isApiDataLoaded);
   const searchText = useSelector(getSearchText);
 
   const [pagination, setPagination] = useState<{ total: number; current?: number }>({
@@ -88,7 +90,7 @@ const Main = () => {
           style={{ marginBottom: 16 }}
         />
       )}
-      {!loading && data.length === 0 && !error && (
+      {apiDataLoaded && !loading && data.length === 0 && !error && (
         <Empty description="No data" style={{ margin: '24px 0' }} />
       )}
       <Table<RandomUserPerson>

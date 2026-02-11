@@ -19,6 +19,7 @@ app.use(
 
 // SPA fallback: serve index.html for non-file routes
 app.get('*', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 app.listen(process.env.PORT || 8080);

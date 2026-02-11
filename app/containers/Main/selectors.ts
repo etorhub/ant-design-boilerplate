@@ -31,3 +31,8 @@ export const getApiDataError = createSelector(
   getAppData,
   data => data.apiDataError,
 );
+
+export const isApiDataLoaded = createSelector(
+  getAppData,
+  data => !!data.apiDataLoaded,
+);
