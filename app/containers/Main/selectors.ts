@@ -2,7 +2,7 @@ import get from 'lodash.get';
 import { createSelector } from 'reselect';
 import type { RootState, RandomUserPerson } from '../../types';
 
-export const getAppData = (state: RootState) => state.app;
+const getAppData = (state: RootState) => state.app;
 
 export const getFilteredDataArray = createSelector(
   getAppData,
