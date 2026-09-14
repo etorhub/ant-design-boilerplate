@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/etorhub/ant-design-boilerplate/actions/workflows/ci.yml/badge.svg?style=flat-square)](https://github.com/etorhub/ant-design-boilerplate/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](./LICENSE)
-[![Node](https://img.shields.io/badge/node-%3E%3D18-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Node](https://img.shields.io/badge/node-%3E%3D20-339933?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org)
 [![npm](https://img.shields.io/badge/npm-%3E%3D9-CB3837?style=flat-square&logo=npm)](https://www.npmjs.com/)
 
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org/)
@@ -17,7 +17,7 @@ Minimal app: fetch data, list and filter with Ant Design Table. Stack: **React 1
 
 ## Quick start
 
-Node ≥18, npm ≥9.
+Node ≥20, npm ≥9.
 
 ```bash
 git clone https://github.com/etorhub/ant-design-boilerplate
@@ -53,7 +53,7 @@ Open [http://localhost:8080](http://localhost:8080).
 
 - **Single run:** `npm test`.
 - **Watch mode:** `npm run test:watch` for development.
-- **Coverage:** `npm run coverage`; open `coverage/index.html`. Config in `vite.config.ts` (Vitest + v8). CI runs lint, coverage, and build on Node 18 and 22.
+- **Coverage:** `npm run coverage`; open `coverage/index.html`. Config in `vite.config.ts` (Vitest + v8). CI runs lint, coverage, and build on Node 20 and 22.
 
 ## Project structure
 
