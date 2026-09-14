@@ -1,5 +1,5 @@
 import type { ColumnsType } from 'antd/es/table';
-import type { RandomUserPerson } from '../../types';
+import type { RandomUserPerson } from '@/types';
 
 const columns: ColumnsType<RandomUserPerson> = [
   {

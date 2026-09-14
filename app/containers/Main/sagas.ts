@@ -1,20 +1,19 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 
+import API_URL from '@/config/constants';
+import type { RandomUserResult } from '@/types';
 import Constants from './constants';
-import API_URL from '../../config/constants';
-import { getAPIDataLoaded, getAPIDataError } from './actions';
-import type { ApiPaginationParams, RandomUserResult } from '../../types';
+import { getAPIData, getAPIDataLoaded, getAPIDataError } from './actions';
 
 const apiUrl = API_URL;
 
-interface FetchDataAction {
-  data: ApiPaginationParams;
-}
+type GetAPIDataAction = ReturnType<typeof getAPIData>;
 
 const fetchData = (
-  { data }: FetchDataAction,
+  action: GetAPIDataAction,
   options: RequestInit,
 ): Promise<{ result?: RandomUserResult; error?: Error }> => {
+  const { data } = action;
   let url = apiUrl;
   url += `?results=${data.results ?? 10}`;
   url += `&page=${data.page ?? 0}`;
@@ -29,9 +28,9 @@ const fetchData = (
 };
 
 function* getApiData(
-  params: FetchDataAction,
+  action: GetAPIDataAction,
 ): Generator<unknown, void, { result?: RandomUserResult; error?: Error }> {
-  const { result, error } = yield call(fetchData, params, { method: 'get' });
+  const { result, error } = yield call(fetchData, action, { method: 'get' });
 
   if (error) {
     yield put(getAPIDataError(error));
@@ -43,9 +42,7 @@ function* getApiData(
 }
 
 function* apiData(): Generator {
-  // redux-saga types expect ActionPattern; string action type is valid at runtime
-  const getApiDataWorker = getApiData as (action: FetchDataAction) => Generator;
-  yield takeLatest(Constants.GET_API_DATA as never, getApiDataWorker);
+  yield takeLatest(Constants.GET_API_DATA, getApiData);
 }
 
 export default apiData;

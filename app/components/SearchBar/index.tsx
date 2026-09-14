@@ -7,10 +7,10 @@ const { Item: FormItem } = Form;
 
 interface SearchBarProps {
   searchText?: string;
-  onChangeSearchText?: (value: string) => void;
+  onChangeSearchText: (value: string) => void;
 }
 
-const SearchBar = ({ searchText = '', onChangeSearchText = () => {} }: SearchBarProps) => (
+const SearchBar = ({ searchText = '', onChangeSearchText }: SearchBarProps) => (
   <div className="searchBar">
     <Form layout="inline">
       <FormItem label="Name">

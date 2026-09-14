@@ -9,6 +9,7 @@ export default defineConfig({
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
+      '@': path.resolve(__dirname, 'app'),
       '\\.(css|less|scss)$': path.resolve(__dirname, 'node_modules/identity-obj-proxy'),
     },
   },

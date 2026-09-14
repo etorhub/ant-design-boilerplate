@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import App from '../containers/Main/index';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import App from '@/containers/Main/index';
 
 const Root = () => (
   <Router>
-    <Switch>
-      <Route path="/" component={App} exact />
-    </Switch>
+    <Routes>
+      <Route path="/" element={<App />} />
+    </Routes>
   </Router>
 );
 

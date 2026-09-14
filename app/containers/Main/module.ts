@@ -1,6 +1,6 @@
 import type { Reducer } from 'redux';
+import type { MainState } from '@/types';
 import Constants from './constants';
-import type { MainState } from '../../types';
 import type { MainAction } from './actions';
 
 export const initialState: MainState = {

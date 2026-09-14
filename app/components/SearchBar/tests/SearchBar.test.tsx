@@ -1,5 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import SearchBar from '../index';
+import SearchBar from '@/components/SearchBar/index';
+
+// Snapshot tests capture structure/layout; update with `npm test -- -u` when
+// SearchBar markup or styling intentionally changes. Prefer explicit assertions
+// (e.g. getByPlaceholderText, getByRole) for behavior.
 
 describe('SearchBar', () => {
   const testProps = {
@@ -12,12 +16,12 @@ describe('SearchBar', () => {
   });
 
   it('should be mounted with no props', () => {
-    const { container } = render(<SearchBar />);
+    const { container } = render(<SearchBar onChangeSearchText={vi.fn()} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should manage typing with only searchText', () => {
-    const { container } = render(<SearchBar searchText="test" />);
+    const { container } = render(<SearchBar searchText="test" onChangeSearchText={vi.fn()} />);
     expect(container).toMatchSnapshot();
   });
 

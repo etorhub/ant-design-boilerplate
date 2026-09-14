@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  ignorePatterns: ['dist/', 'node_modules/', 'coverage/'],
   extends: [
     'airbnb',
     'plugin:@typescript-eslint/recommended',
@@ -9,7 +10,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
-    project: null,
+    project: './tsconfig.json',
   },
   plugins: ['@typescript-eslint'],
   env: {
@@ -48,7 +49,7 @@ module.exports = {
     'operator-linebreak': 'off',
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^React$' }],
-    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.ts', '**/*.test.tsx', '**/tests/**'] }],
@@ -57,6 +58,7 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
+      typescript: { project: './tsconfig.json' },
       node: { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
     },
   },
