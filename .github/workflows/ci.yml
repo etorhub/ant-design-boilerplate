@@ -29,7 +29,8 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Coverage
+      # coverage runs the full suite once (avoids a redundant npm test step)
+      - name: Test & coverage
         run: npm run coverage
 
       - name: Build

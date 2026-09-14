@@ -4,7 +4,10 @@ import { createStore, combineReducers } from 'redux';
 import type { RootState } from '@/types';
 import type { Reducer } from 'redux';
 import mainReducer, { initialState as mainInitialState } from '../module';
-import { getAPIDataError as getAPIDataErrorAction } from '../actions';
+import {
+  getAPIDataError as getAPIDataErrorAction,
+  getAPIDataLoaded as getAPIDataLoadedAction,
+} from '../actions';
 import Main from '../index';
 
 const rootReducer = combineReducers({
@@ -54,17 +57,16 @@ describe('Main', () => {
     expect(screen.getByText('Network error')).toBeInTheDocument();
   });
 
-  it('shows Empty when not loading, no data, and no error', () => {
-    const store = createTestStore({
-      apiData: {},
-      apiDataLoading: false,
-      apiDataError: null,
-    });
+  it('shows Empty when loaded with no data and no error', () => {
+    const store = createTestStore();
     render(
       <Provider store={store}>
         <Main />
       </Provider>,
     );
-    expect(screen.getByText('No data')).toBeInTheDocument();
+    act(() => {
+      store.dispatch(getAPIDataLoadedAction({ results: [] }));
+    });
+    expect(screen.getByText('No results found')).toBeInTheDocument();
   });
 });

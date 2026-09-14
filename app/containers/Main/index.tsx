@@ -90,15 +90,17 @@ const Main = () => {
           style={{ marginBottom: 16 }}
         />
       )}
-      {apiDataLoaded && !loading && data.length === 0 && !error && (
-        <Empty description="No data" style={{ margin: '24px 0' }} />
-      )}
       <Table<RandomUserPerson>
         loading={loading}
         columns={columns}
         dataSource={data}
         onChange={handleTableChange}
         rowSelection={{ selectedRowKeys, onChange: onSelectChange }}
+        locale={{
+          emptyText: apiDataLoaded && !error
+            ? <Empty description="No results found" />
+            : <span />,
+        }}
         pagination={{
           showSizeChanger: true,
           showQuickJumper: true,
